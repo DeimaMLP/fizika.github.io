@@ -1,1 +1,1 @@
-# [fizika.github.io](https://deimamlp.github.io/fizika.github.io/)
+# [deimamlp.github.io](https://deimamlp.github.io/fizika.github.io/)
