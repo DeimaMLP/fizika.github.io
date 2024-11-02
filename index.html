@@ -1,50 +1,41 @@
-body { 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#calculator {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #1C1C1C;
-    padding-top: 60px; 
-    width: 400px;
-    max-width: 400px;
-}
-
-#calculator input[type=text] {
-    background-color: #eb5252;
-    color: white;
-    text-align: right;
-    font-size: 80px;
-    border: none;
-    outline: none;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-#buttons {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-    padding: 8px;
-}
-
-#buttons button {
-    background-color: #505050;
-    color: white;
-    font-size: 36px;
-    text-align: center;
-    width: 80px;
-    height: 80px;
-    border-radius: 40px;
-    border: none;
-}
-
-#buttons button:hover {
-    opacity: 70%;
-}
-
-#buttons button:active {
-    opacity: 90%;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <header id="header">
+        <div class="topbar"><img src="https://cdn.inspireuplift.com/uploads/images/seller_products/29869/1701780343_skibiditoilet11.png" alt="Selam" id="header-img"> <span>Skidibi Land</span></div>
+        <nav id="nav-bar">
+            <a href="#intro" class="nav-link">Introduction</a>
+            <a href="#theform" class="nav-link">Who we are?</a>
+            <a href="#footer" class="nav-link">Be one of us!</a>
+        </nav>
+    </header>
+    <main>
+        <section id="intro">
+            <span id="intro-header">Welcome to the Skidibi Land.</span>
+            <p>Everyone is welcome to the Skidibi Land.</p>
+            <span id="big">Well, what is Skidibi Land?</span>
+            <p>Being a Skidibi Land member, or being a skidibi fan is a passion. Skidibi Land is a community that goals towards spreading that passion.</p>
+            <br>
+            <p id="big">As an example, this Skidibi part is made by Skidibi Land as the idea!</p>
+            <iframe  id="video" width="400" height="200" src="https://www.youtube.com/embed/-74HbNnmf_s" title="skibidi toilet 76 (full episode)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <br>
+        </section>
+        <section id="theform">
+            <span id="big">Want to became a member of Skidibi Land?</span>
+            <form action="https://www.freecodecamp.com/email-submit" id="form">
+                <label for="email">Email: <input type="email" name="email" id="email" placeholder="skidibi@skidibiland.xxx"></label>
+                <input type="submit" value="Submit" id="submit">
+            </form>
+        </section>
+    </main>
+    <footer id="footer">
+        Copyrighted skidibiland.xxx
+    </footer>
+</body>
+</html>
