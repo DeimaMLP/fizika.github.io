@@ -3,39 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
+    <title>Physics Formula Calculator</title>
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <header id="header">
-        <div class="topbar"><img src="https://cdn.inspireuplift.com/uploads/images/seller_products/29869/1701780343_skibiditoilet11.png" alt="Selam" id="header-img"> <span>Skidibi Land</span></div>
-        <nav id="nav-bar">
-            <a href="#intro" class="nav-link">Introduction</a>
-            <a href="#theform" class="nav-link">Who we are?</a>
-            <a href="#footer" class="nav-link">Be one of us!</a>
-        </nav>
-    </header>
-    <main>
-        <section id="intro">
-            <span id="intro-header">Welcome to the Skidibi Land.</span>
-            <p>Everyone is welcome to the Skidibi Land.</p>
-            <span id="big">Well, what is Skidibi Land?</span>
-            <p>Being a Skidibi Land member, or being a skidibi fan is a passion. Skidibi Land is a community that goals towards spreading that passion.</p>
-            <br>
-            <p id="big">As an example, this Skidibi part is made by Skidibi Land as the idea!</p>
-            <iframe  id="video" width="400" height="200" src="https://www.youtube.com/embed/-74HbNnmf_s" title="skibidi toilet 76 (full episode)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            <br>
-        </section>
-        <section id="theform">
-            <span id="big">Want to became a member of Skidibi Land?</span>
-            <form action="https://www.freecodecamp.com/email-submit" id="form">
-                <label for="email">Email: <input type="email" name="email" id="email" placeholder="skidibi@skidibiland.xxx"></label>
-                <input type="submit" value="Submit" id="submit">
+<body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto p-6">
+        <h1 class="text-3xl font-bold text-center mb-8">Physics Formula Calculator</h1>
+        
+        <!-- Velocity Calculator -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-2xl font-semibold mb-4">Calculate Velocity</h2>
+            <form id="velocityForm" class="space-y-4">
+                <div>
+                    <label for="distance" class="block font-medium">Distance (m):</label>
+                    <input type="number" id="distance" class="w-full p-2 border rounded-lg" placeholder="Enter distance">
+                </div>
+                <div>
+                    <label for="time" class="block font-medium">Time (s):</label>
+                    <input type="number" id="time" class="w-full p-2 border rounded-lg" placeholder="Enter time">
+                </div>
+                <button type="button" onclick="calculateVelocity()" class="w-full bg-blue-500 text-white font-semibold p-2 rounded-lg hover:bg-blue-600">Calculate Velocity</button>
             </form>
-        </section>
-    </main>
-    <footer id="footer">
-        Copyrighted skidibiland.xxx
-    </footer>
+            <p id="velocityResult" class="mt-4 text-lg font-medium"></p>
+        </div>
+
+        <!-- Force Calculator -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-semibold mb-4">Calculate Force</h2>
+            <form id="forceForm" class="space-y-4">
+                <div>
+                    <label for="mass" class="block font-medium">Mass (kg):</label>
+                    <input type="number" id="mass" class="w-full p-2 border rounded-lg" placeholder="Enter mass">
+                </div>
+                <div>
+                    <label for="acceleration" class="block font-medium">Acceleration (m/s²):</label>
+                    <input type="number" id="acceleration" class="w-full p-2 border rounded-lg" placeholder="Enter acceleration">
+                </div>
+                <button type="button" onclick="calculateForce()" class="w-full bg-green-500 text-white font-semibold p-2 rounded-lg hover:bg-green-600">Calculate Force</button>
+            </form>
+            <p id="forceResult" class="mt-4 text-lg font-medium"></p>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function calculateVelocity() {
+            const distance = parseFloat(document.getElementById('distance').value);
+            const time = parseFloat(document.getElementById('time').value);
+
+            if (!isNaN(distance) && !isNaN(time) && time > 0) {
+                const velocity = distance / time;
+                document.getElementById('velocityResult').innerText = 'Velocity: ' + velocity.toFixed(2) + ' m/s';
+            } else {
+                document.getElementById('velocityResult').innerText = 'Please enter valid distance and time values.';
+            }
+        }
+
+        function calculateForce() {
+            const mass = parseFloat(document.getElementById('mass').value);
+            const acceleration = parseFloat(document.getElementById('acceleration').value);
+
+            if (!isNaN(mass) && !isNaN(acceleration)) {
+                const force = mass * acceleration;
+                document.getElementById('forceResult').innerText = 'Force: ' + force.toFixed(2) + ' N';
+            } else {
+                document.getElementById('forceResult').innerText = 'Please enter valid mass and acceleration values.';
+            }
+        }
+    </script>
 </body>
 </html>
