@@ -1,91 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Physics Formula Calculator</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f3f4f6;
-        }
-
-        .fade-text {
-            font-size: 1.25rem;
-            animation: fadeIn 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        .grid-background {
-            background: radial-gradient(circle, rgba(200, 200, 200, 0.1) 1px, transparent 1px);
-            background-size: 25px 25px;
-        }
-
-        .dark-mode {
-            background-color: #1e293b;
-            color: #cbd5e1;
-        }
-
-        .dark-mode input {
-            background-color: #374151;
-            border-color: #4b5563;
-            color: #cbd5e1;
-        }
-
-        .dark-mode .bg-white {
-            background-color: #334155;
-        }
-
-        .dark-mode .text-gray-700 {
-            color: #cbd5e1;
-        }
-    </style>
+<head> 
+    <title>Formulių Skaičiuoklė</title>
 </head>
+<body>
+    <h2>Greitis = Kelias / Laikas</h2>
+    <label>Kelia (km):</label>
+    <input type="number" id="kelias1"><br>
+    <label>Laikas (h):</label>
+    <input type="number" id="laikas1"><br>
+    <button onclick="skaiciuotiGreiti()">Skaičiuoti Greitį</button>
+    <p id="greitisRez"></p>
 
-<body class="flex items-center justify-center min-h-screen grid-background" id="body">
-    <div class="absolute top-0 left-0 p-4">
-        <img src="https://avatars.githubusercontent.com/u/112037892?v=4" alt="Avatar" class="w-12 h-12 rounded-full">
-    </div>
-    <div class="absolute top-4 w-full text-center fade-text font-semibold text-gray-700 dark:text-gray-300">
-        Physics Made Easy!
-    </div>
-    <div class="bg-white p-6 rounded-lg shadow-md w-96 dark-mode:bg-gray-800">
-        <h1 class="text-xl font-bold mb-4 text-gray-700 dark:text-gray-300">Physics Formula Calculator</h1>
-        <form id="calculator-form">
-            <div class="mb-4">
-                <label for="mass" class="block text-gray-700 dark:text-gray-300">Mass (kg):</label>
-                <input type="number" id="mass" class="mt-1 block w-full border border-gray-300 rounded p-2 dark-mode:border-gray-600" required>
-            </div>
-            <div class="mb-4">
-                <label for="acceleration" class="block text-gray-700 dark:text-gray-300">Acceleration (m/s²):</label>
-                <input type="number" id="acceleration" class="mt-1 block w-full border border-gray-300 rounded p-2 dark-mode:border-gray-600" required>
-            </div>
-            <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700">Calculate Force</button>
-        </form>
-        <div id="result" class="mt-4 text-gray-700 dark:text-gray-300"></div>
-    </div>
+    <h2>Kelias = Greitis × Laikas</h2>
+    <label>Greitis (km/h):</label>
+    <input type="number" id="greitis2"><br>
+    <label>Laikas (h):</label>
+    <input type="number" id="laikas2"><br>
+    <button onclick="skaiciuotiKelia()">Skaičiuoti Kelią</button>
+    <p id="keliasRez"></p>
+
+    <h2>Laikas = Kelias / Greitis</h2>
+    <label>Kelia (km):</label>
+    <input type="number" id="kelias3"><br>
+    <label>Greitis (km/h):</label>
+    <input type="number" id="greitis3"><br>
+    <button onclick="skaiciuotiLaika()">Skaičiuoti Laiką</button>
+    <p id="laikasRez"></p>
+
+    <h2>Omo Dėsnis</h2>
+
+    <h3>Įtampa = Srovė × Varža</h3>
+    <label>Srovė (A):</label>
+    <input type="number" id="srove1"><br>
+    <label>Varža (Ω):</label>
+    <input type="number" id="varza1"><br>
+    <button onclick="skaiciuotiItampa()">Skaičiuoti Įtampą</button>
+    <p id="itampaRez"></p>
+
+    <h3>Srovė = Įtampa / Varža</h3>
+    <label>Įtampa (V):</label>
+    <input type="number" id="itampa2"><br>
+    <label>Varža (Ω):</label>
+    <input type="number" id="varza2"><br>
+    <button onclick="skaiciuotiSrove()">Skaičiuoti Srovę</button>
+    <p id="sroveRez"></p>
+
+    <h3>Varža = Įtampa / Srovė</h3>
+    <label>Įtampa (V):</label>
+    <input type="number" id="itampa3"><br>
+    <label>Srovė (A):</label>
+    <input type="number" id="srove3"><br>
+    <button onclick="skaiciuotiVarza()">Skaičiuoti Varžą</button>
+    <p id="varzaRez"></p>
 
     <script>
-        document.getElementById('calculator-form').addEventListener('submit', function (event) {
-            event.preventDefault();
-            const mass = parseFloat(document.getElementById('mass').value);
-            const acceleration = parseFloat(document.getElementById('acceleration').value);
-            const force = mass * acceleration;
-            document.getElementById('result').innerText = `Force: ${force} N`;
-        });
-
-        // Toggle dark mode
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'd') {
-                document.getElementById('body').classList.toggle('dark-mode');
+        function skaiciuotiGreiti() {
+            var kelias = parseFloat(document.getElementById("kelias1").value);
+            var laikas = parseFloat(document.getElementById("laikas1").value);
+            if (laikas !== 0) {
+                var greitis = kelias / laikas;
+                document.getElementById("greitisRez").innerText = "Greitis: " + greitis.toFixed(2) + " km/h";
+            } else {
+                document.getElementById("greitisRez").innerText = "Laikas negali būti 0.";
             }
-        });
+        }
+
+        function skaiciuotiKelia() {
+            var greitis = parseFloat(document.getElementById("greitis2").value);
+            var laikas = parseFloat(document.getElementById("laikas2").value);
+            var kelias = greitis * laikas;
+            document.getElementById("keliasRez").innerText = "Kelias: " + kelias.toFixed(2) + " km";
+        }
+
+        function skaiciuotiLaika() {
+            var kelias = parseFloat(document.getElementById("kelias3").value);
+            var greitis = parseFloat(document.getElementById("greitis3").value);
+            if (greitis !== 0) {
+                var laikas = kelias / greitis;
+                document.getElementById("laikasRez").innerText = "Laikas: " + laikas.toFixed(2) + " h";
+            } else {
+                document.getElementById("laikasRez").innerText = "Greitis negali būti 0.";
+            }
+        }
+
+        function skaiciuotiItampa() {
+            var srove = parseFloat(document.getElementById("srove1").value);
+            var varza = parseFloat(document.getElementById("varza1").value);
+            var itampa = srove * varza;
+            document.getElementById("itampaRez").innerText = "Įtampa: " + itampa.toFixed(2) + " V";
+        }
+
+        function skaiciuotiSrove() {
+            var itampa = parseFloat(document.getElementById("itampa2").value);
+            var varza = parseFloat(document.getElementById("varza2").value);
+            if (varza !== 0) {
+                var srove = itampa / varza;
+                document.getElementById("sroveRez").innerText = "Srovė: " + srove.toFixed(2) + " A";
+            } else {
+                document.getElementById("sroveRez").innerText = "Varža negali būti 0.";
+            }
+        }
+
+        function skaiciuotiVarza() {
+            var itampa = parseFloat(document.getElementById("itampa3").value);
+            var srove = parseFloat(document.getElementById("srove3").value);
+            if (srove !== 0) {
+                var varza = itampa / srove;
+                document.getElementById("varzaRez").innerText = "Varža: " + varza.toFixed(2) + " Ω";
+            } else {
+                document.getElementById("varzaRez").innerText = "Srovė negali būti 0.";
+            }
+        }
     </script>
 </body>
-
 </html>
